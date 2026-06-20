@@ -1,0 +1,87 @@
+/* ===== WISHLIST STYLES ===== */
+
+.wishlist-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.wishlist-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+}
+
+.wishlist-header p {
+    color: var(--text-secondary);
+    font-size: 15px;
+}
+
+/* ===== PRODUCT DETAILS HEART ICON ===== */
+.product-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 8px;
+}
+
+.product-title-row h2 {
+    margin: 0;
+    font-size: 28px;
+}
+
+.btn-wishlist {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: var(--transition);
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-wishlist:hover {
+    color: #e53935; /* Red on hover */
+    transform: scale(1.1);
+}
+
+.btn-wishlist.active {
+    color: #e53935; /* Red if active */
+}
+
+/* ===== EMPTY STATE ===== */
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    background: var(--bg-pill);
+    border-radius: var(--radius-lg);
+    border: 1px dashed var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.empty-state svg {
+    color: var(--text-muted);
+    margin-bottom: 16px;
+}
+
+.empty-state h2 {
+    font-size: 20px;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.empty-state p {
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+}
+
+/* ===== PRODUCT GRID RE-USE ===== */
+.btn-remove:hover {
+    background: var(--bg-pill) !important;
+    border-color: var(--text-primary) !important;
+}

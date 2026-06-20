@@ -1,0 +1,233 @@
+/* ===== ORDER HISTORY PAGE ===== */
+
+.history-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.history-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+}
+
+.history-header p {
+    color: var(--text-secondary);
+    font-size: 15px;
+}
+
+/* ===== EMPTY STATE ===== */
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    background: var(--bg-pill);
+    border-radius: var(--radius-lg);
+    border: 1px dashed var(--text-muted);
+}
+
+.empty-state svg {
+    color: var(--text-muted);
+    margin-bottom: 16px;
+}
+
+.empty-state h2 {
+    font-size: 20px;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.empty-state p {
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+}
+
+/* ===== ORDERS LIST ===== */
+.orders-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.order-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 24px;
+    transition: var(--transition);
+}
+
+.order-card:hover {
+    box-shadow: var(--shadow-sm);
+    border-color: var(--text-muted);
+}
+
+/* HEADER */
+.order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+}
+
+.order-id {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-primary);
+    display: block;
+    margin-bottom: 4px;
+}
+
+.order-date {
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+.order-status {
+    padding: 6px 14px;
+    border-radius: var(--radius-pill);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.status-placed { background: #e3f2fd; color: #1976d2; }
+.status-shipped { background: #fff3e0; color: #f57c00; }
+.status-delivered { background: #e8f5e9; color: #388e3c; }
+.status-cancelled { background: #ffebee; color: #d32f2f; }
+
+/* BODY */
+.order-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    font-size: 14px;
+}
+
+.order-body p {
+    margin-bottom: 8px;
+    color: var(--text-secondary);
+}
+
+.order-body strong {
+    color: var(--text-primary);
+}
+
+.price {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+/* ===== TRACKER ===== */
+.order-tracker {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 32px 0 16px;
+    position: relative;
+    padding: 0 10px;
+}
+
+.tracker-line {
+    position: absolute;
+    top: 15px;
+    left: 40px;
+    right: 40px;
+    height: 3px;
+    background: var(--bg-dark);
+    z-index: 1;
+}
+
+.tracker-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: var(--primary);
+    transition: width 1s ease;
+}
+
+.tracker-step {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    width: 60px;
+}
+
+.step-dot {
+    width: 32px;
+    height: 32px;
+    background: var(--bg-dark);
+    border: 3px solid var(--border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    transition: all 0.4s ease;
+}
+
+.step-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+}
+
+/* TRACKER STATES */
+.tracker-step.active .step-dot {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: #000;
+    box-shadow: 0 0 15px var(--primary-glow);
+}
+
+.tracker-step.active .step-label {
+    color: var(--text-primary);
+}
+
+.tracker-step.completed .step-dot {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: #000;
+}
+
+.tracker-step.completed .step-label {
+    color: var(--text-secondary);
+}
+
+.tracker-step.cancelled .step-dot {
+    background: #ff4757;
+    border-color: #ff4757;
+    color: #fff;
+}
+
+.btn-outline:hover {
+    border-color: var(--text-primary);
+    background: var(--bg-pill);
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+    .order-body {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    .order-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+}

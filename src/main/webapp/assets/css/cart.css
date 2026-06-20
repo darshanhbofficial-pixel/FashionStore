@@ -1,0 +1,165 @@
+/* ===== CART PAGE ===== */
+
+body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--bg-body);
+    margin: 0;
+    padding: 0;
+}
+
+/* ===== TITLE ===== */
+h2 {
+    text-align: center;
+    margin: 24px 0;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.3px;
+}
+
+/* ===== TABLE ===== */
+table {
+    width: 95%;
+    margin: 0 auto;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border);
+}
+
+/* ===== HEADER ===== */
+th {
+    background: linear-gradient(135deg, var(--bg-dark), var(--bg-dark-card));
+    color: white;
+    padding: 14px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+/* ===== CELLS ===== */
+td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+    text-align: center;
+    font-size: 14px;
+    color: var(--text-primary);
+    vertical-align: middle;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+tr:hover td {
+    background: rgba(108, 92, 231, 0.03);
+}
+
+/* ===== IMAGE ===== */
+td img {
+    width: 56px;
+    height: 56px;
+    object-fit: cover;
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-sm);
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+    padding: 8px 14px;
+    border: none;
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    transition: var(--transition);
+    letter-spacing: 0.2px;
+}
+
+/* UPDATE BUTTON */
+.update {
+    background: linear-gradient(135deg, #f39c12, #e67e22);
+    color: white;
+}
+
+.update:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(243, 156, 18, 0.35);
+}
+
+/* REMOVE BUTTON */
+.remove {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    color: white;
+}
+
+.remove:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(231, 76, 60, 0.35);
+}
+
+/* ===== INPUT ===== */
+input[type="number"] {
+    padding: 8px;
+    width: 56px;
+    border: 2px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: white;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    text-align: center;
+    transition: var(--transition);
+    color: #000000;
+}
+
+input[type="number"]:focus {
+    border-color: var(--primary);
+    outline: none;
+    box-shadow: 0 0 0 3px var(--primary-glow);
+}
+
+/* ===== TOTAL ===== */
+.total {
+    width: 95%;
+    margin: 24px auto 0;
+    text-align: right;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.3px;
+}
+
+/* ===== EMPTY CART ===== */
+h3 {
+    text-align: center;
+    margin-top: 60px;
+    color: var(--text-muted);
+    font-size: 18px;
+    font-weight: 500;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    table {
+        width: 100%;
+        font-size: 12px;
+    }
+
+    th, td {
+        padding: 10px 8px;
+    }
+
+    td img {
+        width: 44px;
+        height: 44px;
+    }
+
+    .total {
+        width: 100%;
+    }
+}

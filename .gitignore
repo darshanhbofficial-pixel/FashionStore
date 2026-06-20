@@ -1,0 +1,15 @@
+# Maven build output
+target/
+
+# Eclipse files (optional, but recommended to ignore if using Maven)
+.settings/
+.metadata/
+bin/
+*.class
+
+# Log files
+*.log
+
+# OS generated files
+Thumbs.db
+desktop.ini

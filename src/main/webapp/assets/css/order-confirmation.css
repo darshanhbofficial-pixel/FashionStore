@@ -1,0 +1,147 @@
+/* ===== ORDER CONFIRMATION PAGE ===== */
+
+/* PAGE BACKGROUND — inherits from style.css body */
+
+/* CENTER WRAPPER */
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+/* MAIN CARD */
+.wrapper > .card {
+    width: 660px;
+    background: var(--bg-dark-card);
+    border-radius: var(--radius-xl);
+    padding: 40px 36px;
+    color: #fff;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    animation: confirmSlideIn 0.5s ease-out;
+}
+
+/* SUCCESS ICON */
+.icon {
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 18px;
+    font-size: 24px;
+    box-shadow: 0 6px 20px rgba(46, 204, 113, 0.35);
+    animation: iconPop 0.6s ease-out 0.3s both;
+}
+
+/* TITLE */
+.wrapper .card h2 {
+    text-align: center;
+    margin-bottom: 6px;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+}
+
+/* SUBTEXT */
+.wrapper .card > p {
+    text-align: center;
+    color: #9ba3b5;
+    margin-bottom: 28px;
+    font-size: 15px;
+}
+
+/* INNER DETAILS BOX */
+.details {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-md);
+    padding: 4px 0;
+    margin-bottom: 24px;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+/* ROW STYLE */
+.row {
+    display: flex;
+    justify-content: space-between;
+    padding: 14px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    font-size: 14px;
+    color: #c0c0d0;
+    transition: var(--transition-fast);
+}
+
+.row:hover {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+/* LAST ROW */
+.row:last-child {
+    border-bottom: none;
+}
+
+/* TOTAL ROW */
+.row.total {
+    font-weight: 700;
+    font-size: 16px;
+    color: #fff;
+    background: rgba(108, 92, 231, 0.1);
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+}
+
+/* DELIVERY BOX */
+.delivery {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.delivery h3 {
+    margin-bottom: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.delivery p {
+    margin: 5px 0;
+    color: #9ba3b5;
+    font-size: 14px;
+    line-height: 1.6;
+    text-align: left;
+}
+
+/* ANIMATIONS */
+@keyframes confirmSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.97);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes iconPop {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* RESPONSIVE */
+@media (max-width: 700px) {
+    .wrapper > .card {
+        width: 100%;
+        padding: 28px 20px;
+    }
+}

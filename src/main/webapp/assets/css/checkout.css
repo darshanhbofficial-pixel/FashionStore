@@ -1,0 +1,198 @@
+/* ===== CHECKOUT PAGE ===== */
+
+/* PAGE TITLE */
+h2 {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    letter-spacing: -0.3px;
+}
+
+/* MAIN LAYOUT */
+.checkout-container {
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+    margin-top: 24px;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+/* LEFT CARD (FORM) */
+.checkout-card {
+    width: 100%;
+    max-width: 520px;
+    background: var(--bg-card);
+    padding: 32px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border);
+}
+
+/* RIGHT SUMMARY */
+.order-summary {
+    width: 320px;
+    background: var(--bg-card);
+    padding: 28px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border);
+    height: fit-content;
+    position: sticky;
+    top: 100px;
+}
+
+/* HEADINGS */
+.checkout-card h3,
+.order-summary h3 {
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.3px;
+}
+
+/* INPUTS */
+.checkout-card input[type="text"] {
+    width: 100%;
+    padding: 14px 16px;
+    margin-bottom: 14px;
+    border: 2px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    transition: var(--transition);
+    background: var(--bg-pill);
+    color: var(--text-primary);
+}
+
+.checkout-card input[type="text"]::placeholder {
+    color: var(--text-muted);
+}
+
+.checkout-card input[type="text"]:focus {
+    border-color: var(--primary);
+    outline: none;
+    box-shadow: 0 0 0 4px var(--primary-glow);
+    background: var(--bg-dark-card);
+    color: white;
+}
+
+/* PAYMENT SECTION */
+.payment-method {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.payment-option {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 14px;
+    padding: 14px 18px;
+    border: 2px solid var(--border);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    background: var(--bg-pill);
+    transition: var(--transition);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.payment-option:hover {
+    border-color: var(--primary-light);
+    background: rgba(108, 92, 231, 0.04);
+}
+
+.payment-option input[type="radio"] {
+    transform: scale(1.15);
+    accent-color: var(--primary);
+    width: auto;
+    margin: 0;
+    padding: 0;
+}
+
+/* PLACE ORDER BUTTON */
+.btn-checkout {
+    width: 100%;
+    padding: 14px;
+    margin-top: 20px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: #000000;
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+    transition: var(--transition);
+    letter-spacing: 0.3px;
+}
+
+.btn-checkout:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-primary);
+}
+
+.btn-checkout:active {
+    transform: translateY(0);
+}
+
+/* SUMMARY ITEMS */
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 16px 0;
+}
+
+.summary-total {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    font-size: 18px;
+    margin-top: 8px;
+    color: var(--text-primary);
+}
+
+/* BACK LINK */
+.back-cart {
+    display: inline-block;
+    margin-top: 18px;
+    text-decoration: none;
+    color: var(--primary);
+    font-size: 14px;
+    font-weight: 600;
+    transition: var(--transition-fast);
+}
+
+.back-cart:hover {
+    color: var(--primary-dark);
+    text-decoration: underline;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .checkout-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .order-summary {
+        width: 100%;
+        max-width: 520px;
+        position: static;
+    }
+}
