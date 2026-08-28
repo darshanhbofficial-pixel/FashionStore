@@ -1,0 +1,5 @@
+# Database Configuration Template
+# Copy this file to 'db.properties' and fill in your local or server database details.
+db.url=jdbc:mysql://127.0.0.1:3306/fashion_store?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Kolkata
+db.user=root
+db.password=your_database_password_here

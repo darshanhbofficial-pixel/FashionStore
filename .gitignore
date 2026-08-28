@@ -7,9 +7,9 @@ target/
 bin/
 *.class
 
-# Log files
-*.log
+# Sensitive environment and property files
+*.properties
+!src/main/resources/db.properties.example
+.env
+.env.*
 
-# OS generated files
-Thumbs.db
-desktop.ini

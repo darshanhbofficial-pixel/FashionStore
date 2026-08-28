@@ -519,12 +519,12 @@ The connection is managed by [DBConnection.java](file:///c:/Users/Admin/Desktop/
 
 | Property | Value |
 |---|---|
-| URL | `jdbc:mysql://localhost:3306/fashion_store?useSSL=false&serverTimezone=UTC` |
-| Username | `root` |
-| Password | `8299` |
+| URL | Environment variable `DB_URL` / `MYSQL_URL` or `db.properties` |
+| Username | Environment variable `DB_USER` / `MYSQLUSER` or `db.properties` |
+| Password | Environment variable `DB_PASSWORD` / `MYSQLPASSWORD` or `db.properties` (Secured / Gitignored) |
 | Driver | `com.mysql.cj.jdbc.Driver` |
-| Loading | Static initializer block with `Class.forName()` |
-| Pattern | New connection per request (no connection pooling) |
+| Loading | Static initializer with classpath property and environment variable resolver |
+| Pattern | Connection via `DBConnection.getConnection()` |
 
 > [!WARNING]
 > **Security concerns**: The database password is hardcoded in the source code and passwords are stored in plain text (no hashing). These should be addressed before production deployment.
