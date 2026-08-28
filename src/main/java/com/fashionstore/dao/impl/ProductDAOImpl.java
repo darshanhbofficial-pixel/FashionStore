@@ -16,22 +16,22 @@ public class ProductDAOImpl implements ProductDAO {
     // ================= SQL QUERIES =================
 
     private static final String GET_ALL_PRODUCTS_SQL =
-            "SELECT * FROM products";
+            "SELECT * FROM products WHERE is_active = TRUE";
 
     private static final String GET_PRODUCT_BY_ID_SQL =
             "SELECT * FROM products WHERE product_id = ?";
 
     private static final String GET_PRODUCTS_BY_CATEGORY_SQL =
-            "SELECT * FROM products WHERE category_id = ?";
+            "SELECT * FROM products WHERE category_id = ? AND is_active = TRUE";
 
     private static final String SEARCH_PRODUCTS_SQL =
-            "SELECT DISTINCT p.* FROM products p LEFT JOIN categories c ON p.category_id = c.category_id WHERE (p.product_name LIKE ? OR p.brand LIKE ? OR c.category_name LIKE ?)";
+            "SELECT DISTINCT p.* FROM products p LEFT JOIN categories c ON p.category_id = c.category_id WHERE (p.product_name LIKE ? OR p.brand LIKE ? OR c.category_name LIKE ?) AND p.is_active = TRUE";
 
     private static final String FILTER_PRODUCTS_SQL =
-            "SELECT * FROM products WHERE category_id = ? AND price BETWEEN ? AND ?";
+            "SELECT * FROM products WHERE category_id = ? AND price BETWEEN ? AND ? AND is_active = TRUE";
 
     private static final String FILTER_WITH_KEYWORD_SQL =
-            "SELECT * FROM products WHERE category_id = ? AND (product_name LIKE ? OR brand LIKE ?) AND price BETWEEN ? AND ?";
+            "SELECT * FROM products WHERE category_id = ? AND (product_name LIKE ? OR brand LIKE ?) AND price BETWEEN ? AND ? AND is_active = TRUE";
 
     private static final String ADD_PRODUCT_SQL =
             "INSERT INTO products (category_id, product_name, brand, description, price, image_url, is_active) VALUES (?, ?, ?, ?, ?, ?, ?)";
@@ -193,7 +193,7 @@ public class ProductDAOImpl implements ProductDAO {
 
             String sql = "SELECT p.* FROM products p " +
                          "JOIN categories c ON p.category_id = c.category_id " +
-                         "WHERE c.category_name = ?";
+                         "WHERE c.category_name = ? AND p.is_active = TRUE";
 
             try (PreparedStatement ps = con.prepareStatement(sql)) {
                 ps.setString(1, category);
@@ -217,7 +217,7 @@ public class ProductDAOImpl implements ProductDAO {
         List<Product> list = new ArrayList<>();
 
         try (Connection con = DBConnection.getConnection();
-             PreparedStatement ps = con.prepareStatement("SELECT * FROM products WHERE price BETWEEN ? AND ?")) {
+             PreparedStatement ps = con.prepareStatement("SELECT * FROM products WHERE price BETWEEN ? AND ? AND is_active = TRUE")) {
 
             ps.setDouble(1, minPrice);
             ps.setDouble(2, maxPrice);

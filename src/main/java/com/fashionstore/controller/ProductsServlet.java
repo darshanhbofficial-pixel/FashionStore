@@ -142,14 +142,6 @@ public class ProductsServlet extends HttpServlet {
                 products = productDAO.getAllProducts();
             }
 
-            // 🔥 FIX: Temporarily remove all phones globally as requested
-            if (products != null) {
-                products.removeIf(p -> {
-                    String name = p.getProductName() != null ? p.getProductName().toLowerCase() : "";
-                    return name.contains("phone") || name.contains("galaxy") || name.contains("redmi");
-                });
-            }
-
 
 
             // 🔹 SEND DATA

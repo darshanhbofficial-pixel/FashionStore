@@ -33,14 +33,6 @@ public class HomeServlet extends HttpServlet {
             // 1. Fetch products (later we can limit to featured)
             List<Product> products = productDAO.getAllProducts();
 
-            // 🔥 FIX: Temporarily remove all phones as requested
-            if (products != null) {
-                products.removeIf(p -> {
-                    String name = p.getProductName() != null ? p.getProductName().toLowerCase() : "";
-                    return name.contains("phone") || name.contains("galaxy") || name.contains("redmi");
-                });
-            }
-
             // 2. Set to request
             request.setAttribute("products", products);
 

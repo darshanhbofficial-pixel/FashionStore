@@ -7,9 +7,10 @@
     <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/assets/images/favicon.png">
     <title>Product Details</title>
 
-    <link rel="stylesheet" href="/FashionStore/assets/css/style.css?v=13">
-    <link rel="stylesheet" href="/FashionStore/assets/css/product-details.css">
-    <link rel="stylesheet" href="/FashionStore/assets/css/wishlist.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/style.css?v=13">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/product-details.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/wishlist.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/home.css">
 </head>
 <body>
 
