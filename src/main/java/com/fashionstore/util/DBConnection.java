@@ -14,60 +14,85 @@ public class DBConnection {
 
     static {
         try {
-            // Load MySQL JDBC Driver
             Class.forName("com.mysql.cj.jdbc.Driver");
-            System.out.println("✅ MySQL JDBC Driver Loaded");
+            System.out.println("MySQL JDBC Driver Loaded");
 
-            // 1. Check if properties exist in db.properties file (ignored by Git)
+            // Load local db.properties if available
             Properties props = new Properties();
-            try (InputStream in = DBConnection.class.getClassLoader().getResourceAsStream("db.properties")) {
+
+            try (InputStream in = DBConnection.class.getClassLoader()
+                    .getResourceAsStream("db.properties")) {
+
                 if (in != null) {
                     props.load(in);
                 }
+
             } catch (Exception e) {
-                System.out.println("ℹ️ No db.properties found on classpath, checking environment variables...");
+                System.out.println("No db.properties found.");
             }
 
-            // 2. Read from Environment Variables (for Cloud deployment) or fallback to db.properties
-            String envUrl = System.getenv("DB_URL");
-            if (envUrl == null) envUrl = System.getenv("MYSQL_URL");
-            if (envUrl == null) envUrl = System.getenv("DATABASE_URL");
+            // Railway / Cloud environment variables
+            String host = System.getenv("MYSQLHOST");
+            String port = System.getenv("MYSQLPORT");
+            String envUser = System.getenv("MYSQLUSER");
+            String envPassword = System.getenv("MYSQLPASSWORD");
 
-            String envUser = System.getenv("DB_USER");
-            if (envUser == null) envUser = System.getenv("MYSQLUSER");
+            // CLOUD DEPLOYMENT
+            if (host != null && !host.isBlank()) {
 
-            String envPassword = System.getenv("DB_PASSWORD");
-            if (envPassword == null) envPassword = System.getenv("MYSQLPASSWORD");
+                // Your imported Fashion Store schema
+                String database = "fashion_store";
 
-            url = (envUrl != null && !envUrl.trim().isEmpty()) 
-                    ? envUrl 
-                    : props.getProperty("db.url", "jdbc:mysql://127.0.0.1:3306/fashion_store?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Kolkata");
+                url = "jdbc:mysql://" + host + ":" + port + "/" + database
+                        + "?useSSL=true"
+                        + "&serverTimezone=Asia/Kolkata"
+                        + "&allowPublicKeyRetrieval=true";
 
-            user = (envUser != null && !envUser.trim().isEmpty()) 
-                    ? envUser 
-                    : props.getProperty("db.user", "root");
+                user = envUser;
+                password = envPassword;
 
-            password = (envPassword != null) 
-                    ? envPassword 
-                    : props.getProperty("db.password", "");
+                System.out.println("Using Railway Cloud Database");
+                System.out.println("Database: " + database);
+
+            } else {
+
+                // LOCAL DEVELOPMENT
+                url = props.getProperty(
+                        "db.url",
+                        "jdbc:mysql://127.0.0.1:3306/fashion_store"
+                                + "?useSSL=false"
+                                + "&allowPublicKeyRetrieval=true"
+                                + "&serverTimezone=Asia/Kolkata");
+
+                user = props.getProperty("db.user", "root");
+                password = props.getProperty("db.password", "");
+
+                System.out.println("Using Local Database");
+            }
 
         } catch (ClassNotFoundException e) {
-            System.err.println("❌ MySQL Driver not found!");
+
+            System.err.println("MySQL Driver not found!");
             e.printStackTrace();
         }
     }
 
     public static Connection getConnection() {
+
         try {
-            Connection connection = DriverManager.getConnection(url, user, password);
-            return connection;
+            return DriverManager.getConnection(url, user, password);
+
         } catch (SQLException e) {
-            System.err.println("❌ ERROR: Failed to connect to MySQL database!");
-            System.err.println("❌ URL: " + url);
-            System.err.println("❌ ERROR MESSAGE: " + e.getMessage());
-            System.err.println("❌ SQL STATE: " + e.getSQLState());
+
+            System.err.println("ERROR: Failed to connect to MySQL database!");
+            System.err.println("ERROR MESSAGE: " + e.getMessage());
+            System.err.println("SQL STATE: " + e.getSQLState());
+
             e.printStackTrace();
-            throw new RuntimeException("Database connection failed: " + e.getMessage(), e);
+
+            throw new RuntimeException(
+                    "Database connection failed: " + e.getMessage(),
+                    e);
         }
     }
 }

@@ -8,12 +8,11 @@ import com.fashionstore.dao.impl.ProductDAOImpl;
 import com.fashionstore.model.Product;
 
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
+
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/home")
 public class HomeServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
@@ -38,7 +37,7 @@ public class HomeServlet extends HttpServlet {
 
             // 3. Forward to JSP
             request.getRequestDispatcher("/WEB-INF/views/home.jsp")
-                   .forward(request, response);
+                    .forward(request, response);
 
         } catch (Exception e) {
             e.printStackTrace();
